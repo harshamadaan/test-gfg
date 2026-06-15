@@ -1,13 +1,15 @@
 class Solution {
     public static int largest(int[] arr) {
         // code here
-        int largest=arr[0];
         int n=arr.length;
-        for(int i=0;i<n;i++){
-            if(arr[i]>largest){
-                largest=arr[i];
+        int maxEle=arr[0];
+        for(int i=1;i<n;i++){
+            if(arr[i]>maxEle){
+                maxEle=arr[i];
             }
+            
         }
-        return largest;
+        return maxEle;
+        
     }
 }
