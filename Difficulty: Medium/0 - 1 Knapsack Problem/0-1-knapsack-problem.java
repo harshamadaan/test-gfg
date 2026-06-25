@@ -1,38 +1,22 @@
-import java.util.*;
-
 class Solution {
-
-    static int[][] t;
-
+    int[][]t;
     public int knapsack(int W, int val[], int wt[]) {
-
-        int n = wt.length;
-        t = new int[n + 1][W + 1];
-
-        for (int i = 0; i <= n; i++) {
-            Arrays.fill(t[i], -1);
+        // code here
+        int n=wt.length;
+        t=new int[n+1][W+1];
+        for(int i=0;i<=n;i++){
+            for(int j=0;j<=W;j++){
+                if(i==0 || j==0) t[i][j]= 0;
+                else if(wt[i-1]<=j){
+                    t[i][j]=Math.max(val[i-1]+t[i-1][j-wt[i-1]],
+                    t[i-1][j]);
+                }else{
+                    t[i][j]= t[i-1][j];
+                }
+            }
         }
-
-        return solve(W, val, wt, n);
-    }
-
-    static int solve(int W, int val[], int wt[], int n) {
-
-        if (n == 0 || W == 0)
-            return 0;
-
-        if (t[n][W] != -1)
-            return t[n][W];
-
-        if (wt[n - 1] <= W) {
-            t[n][W] = Math.max(
-                    val[n - 1] + solve(W - wt[n - 1], val, wt, n - 1),
-                    solve(W, val, wt, n - 1)
-            );
-        } else {
-            t[n][W] = solve(W, val, wt, n - 1);
-        }
-
         return t[n][W];
+        
+        
     }
 }
