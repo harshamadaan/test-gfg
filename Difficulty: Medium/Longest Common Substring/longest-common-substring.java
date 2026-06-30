@@ -1,15 +1,14 @@
-// User function Template for Java
-
 class Solution {
-    public int longestCommonSubstr(String s1, String s2) {
+    int[][]t;
+    public int longCommSubstr(String s1, String s2) {
         // code here
         int m=s1.length();
         int n=s2.length();
-        int[][] t=new int[m+1][n+1];
+        t=new int[m+1][n+1];
         for(int i=0;i<=m;i++){
+            t[i][0]=0;
             for(int j=0;j<=n;j++){
-                if(i==0 || j==0)
-                t[i][j]=0;
+                t[0][j]=0;
             }
         }
         int maxLen=0;
@@ -21,11 +20,9 @@ class Solution {
                 }else{
                     t[i][j]=0;
                 }
-                
             }
         }
         return maxLen;
-        
         
     }
 }
