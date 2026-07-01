@@ -1,10 +1,9 @@
-// User function Template for Java
-
 class Solution {
+    int[][]t;
     public int LongestRepeatingSubsequence(String s) {
         // code here
         int n=s.length();
-        int [][] t=new int[n+1][n+1];
+        t=new int[n+1][n+1];
         for(int i=1;i<=n;i++){
             for(int j=1;j<=n;j++){
                 if(s.charAt(i-1)==s.charAt(j-1) && i!=j){
@@ -15,5 +14,6 @@ class Solution {
             }
         }
         return t[n][n];
+        
     }
 }
